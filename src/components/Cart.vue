@@ -1,21 +1,23 @@
 <template>
-	<div class="col-sm-12 d-flex mb-5 cart-item">
+	<div class="col-sm-12 py-2 border-bottom cart-item">
 		<div class="row">
-			<div class="col-sm-2 d-flex align-items-center justify-content-center">
+			<div class="col-md-2 d-flex align-items-center justify-content-center cart-item-img">
 				<img :src="image"/>
 			</div>
-			<div class="col-sm-10">
-				<h1>{{manufacturer}} {{name}}</h1>
+			<div class="col-md-10">
+				<div class="mb-2">
+					<span class="h4">{{manufacturer}} {{name}}</span>
+				</div>
 				<span>Qty: {{quantity}}</span>
 				<p>{{description}}</p>
-				<span>{{'$' + price}}</span>
+				<strong class="h5">{{'$' + price}}</strong>
 			</div>
 		</div>
 	</div>
 </template>
 
 <style scoped>
-	.cart-item img {
+	.cart-item-img img {
 		max-width: 150px;
 		height: auto;
 	}

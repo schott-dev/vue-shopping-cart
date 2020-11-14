@@ -1,8 +1,14 @@
 <template>
-	<div id="app">
+	<div id="main">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+			<div class="navbar-brand">
+				<img src="./assets/logo.png" height="35">
+				<span class="ml-2">Vue Shopping Cart</span>
+			</div>
+		</nav>
 		<div class="container">
 			<div class="row">
-				<CartItem
+				<Cart
 					v-for="item in cart"
 					:key="item.itemid"
 					:id="item.itemid"
@@ -14,22 +20,40 @@
 					:quantity="item.quantity"
 				/>
 			</div>
+			<div class="text-right mt-2">
+				<span class="h4">Total: <strong>{{'$' + total}}</strong></span>
+			</div>
 		</div>
 	</div>
 </template>
 
+<style scoped>
+	.container {
+		margin-top: 75px;
+	}
+</style>
+
 <script>
-	import CartItem from "./components/CartItem.vue";
+	import Cart from "./components/Cart.vue";
 
 	export default {
 		name: 'App',
 		computed: {
 			cart() {
 				return this.$store.getters.items;
+			},
+			total() {
+				let total = 0;
+
+				this.cart.forEach(function(item) {
+					total += (parseFloat(item.price) * item.quantity);
+				});
+
+				return total;
 			}
 		},
 		components: {
-			CartItem
+			Cart
 		}
 	}
 </script>
