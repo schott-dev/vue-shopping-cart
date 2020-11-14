@@ -1,4 +1,5 @@
-# vue-shopping-cart
+# Vue Shopping Cart
+Shopping cart application built using Vue.js with Vuex.
 
 ## Project setup
 ```

@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<div class="container">
+			<div class="row">
+				<CartItem
+					v-for="item in cart"
+					:key="item.itemid"
+					:id="item.itemid"
+					:manufacturer="item.manufacturer"
+					:name="item.productName"
+					:description="item.description"
+					:image="item.image"
+					:price="item.price"
+					:quantity="item.quantity"
+				/>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+	import CartItem from "./components/CartItem.vue";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	export default {
+		name: 'App',
+		computed: {
+			cart() {
+				return this.$store.getters.items;
+			}
+		},
+		components: {
+			CartItem
+		}
+	}
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
