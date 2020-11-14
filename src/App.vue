@@ -15,13 +15,14 @@
 					:manufacturer="item.manufacturer"
 					:name="item.productName"
 					:description="item.description"
+					:url="item.url"
 					:image="item.image"
 					:price="item.price"
 					:quantity="item.quantity"
 					:available="item.available"
 				/>
 			</div>
-			<div v-if="cart.length" class="text-right mt-2">
+			<div v-if="cart.length" class="text-right mt-2 mb-4">
 				<span class="h4">Subtotal: <strong>{{'$' + total}}</strong></span>
 			</div>
 			<div v-if="!cart.length" id="empty-cart" class="text-center mt-2">

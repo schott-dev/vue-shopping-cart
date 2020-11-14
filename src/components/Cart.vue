@@ -6,11 +6,11 @@
 			</div>
 			<div class="col-md-10">
 				<div class="mb-2 d-flex justify-content-between">
-					<span class="h4">{{manufacturer}} {{name}}</span>
+					<a :href="url" target="_blank" class="h4">{{manufacturer}} {{name}}</a>
 					<strong class="h5">{{'$' + price}}</strong>
 				</div>
-				<p class="mb-5">{{description}}</p>
-				<div class="d-flex justify-content-between">
+				<p>{{description}}</p>
+				<div class="d-flex justify-content-between mt-5">
 					<div>
 						<span class="mr-1">Quantity:</span>
 						<button class="btn btn-sm mr-1" @click="decQty(id)" :disabled="quantity === 0"><i class="fas fa-minus-circle text-secondary"></i></button>
@@ -35,7 +35,7 @@
 <script>
 	export default {
 		name: 'cartItem',
-		props: ['id', 'manufacturer', 'name', 'description', 'image', 'price', 'quantity', 'available'],
+		props: ['id', 'manufacturer', 'name', 'description', 'url', 'image', 'price', 'quantity', 'available'],
 		methods : {
 			incQty(id) {
 				this.$store.dispatch('incQty', id);
