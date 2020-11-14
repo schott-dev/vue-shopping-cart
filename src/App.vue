@@ -18,10 +18,11 @@
 					:image="item.image"
 					:price="item.price"
 					:quantity="item.quantity"
+					:available="item.available"
 				/>
 			</div>
 			<div class="text-right mt-2">
-				<span class="h4">Total: <strong>{{'$' + total}}</strong></span>
+				<span class="h4">Subtotal: <strong>{{'$' + total}}</strong></span>
 			</div>
 		</div>
 	</div>
@@ -49,7 +50,7 @@
 					total += (parseFloat(item.price) * item.quantity);
 				});
 
-				return total;
+				return total.toFixed(2);
 			}
 		},
 		components: {

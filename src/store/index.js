@@ -57,9 +57,44 @@ export default new Vuex.Store({
 		items: (state) => state.cart,
 	},
 	mutations: {
+		inc_qty(state, id) {
+			for (var i in state.cart) {
+				if (state.cart[i].itemid === id) {
+					state.cart[i].quantity += 1;
+					break;
+				}
+			}
+		},
+		dec_qty(state, id) {
+
+			console.log(state.cart);
+
+			for (var i in state.cart) {
+				if (state.cart[i].itemid === id) {
+					state.cart[i].quantity -= 1;
+					break;
+				}
+			}
+		},
+		remove_item(state, id) {
+			for (var i in state.cart) {
+				if (state.cart[i].itemid === id) {
+					state.cart.splice(i, 1);
+					break;
+				}
+			}
+		}
 	},
 	actions: {
+		incQty(context, id) {
+			context.commit('inc_qty', id);
+		},
+		decQty(context, id) {
+			context.commit('dec_qty', id);
+		},
+		removeItem(context, id) {
+			context.commit('remove_item', id);
+		}
 	},
-	modules: {
-	}
+	modules: {}
 })

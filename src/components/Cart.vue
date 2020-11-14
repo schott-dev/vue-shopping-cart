@@ -5,12 +5,21 @@
 				<img :src="image"/>
 			</div>
 			<div class="col-md-10">
-				<div class="mb-2">
+				<div class="mb-2 d-flex justify-content-between">
 					<span class="h4">{{manufacturer}} {{name}}</span>
+					<strong class="h5">{{'$' + price}}</strong>
 				</div>
-				<span>Qty: {{quantity}}</span>
-				<p>{{description}}</p>
-				<strong class="h5">{{'$' + price}}</strong>
+				<p class="mb-5">{{description}}</p>
+				<div class="d-flex justify-content-between">
+					<div>
+						<span class="mr-1">Quantity:</span>
+						<button class="btn btn-sm mr-1" @click="decQty(id)" :disabled="quantity === 0"><i class="fas fa-minus-circle text-secondary"></i></button>
+						<strong>{{quantity}}</strong>
+						<button class="btn btn-sm ml-1" @click="incQty(id)" :disabled="quantity === available"><i class="fas fa-plus-circle text-secondary"></i></button>
+					</div>
+					<button @click="removeItem(id)" class="btn badge badge-warning float-right">Remove <i class="ml-1 fas fa-trash"></i></button>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -26,6 +35,17 @@
 <script>
 	export default {
 		name: 'cartItem',
-		props: ['itemid', 'manufacturer', 'name', 'description', 'image', 'price', 'quantity' ]
+		props: ['id', 'manufacturer', 'name', 'description', 'image', 'price', 'quantity', 'available'],
+		methods : {
+			incQty(id) {
+				this.$store.dispatch('incQty', id);
+			},
+			decQty(id) {
+				this.$store.dispatch('decQty', id);
+			},
+			removeItem(id) {
+				this.$store.dispatch('removeItem', id);
+			}
+		}
 	};
 </script>
