@@ -21,8 +21,13 @@
 					:available="item.available"
 				/>
 			</div>
-			<div class="text-right mt-2">
+			<div v-if="cart.length" class="text-right mt-2">
 				<span class="h4">Subtotal: <strong>{{'$' + total}}</strong></span>
+			</div>
+			<div v-if="!cart.length" id="empty-cart" class="text-center mt-2">
+				<div class="mb-4"><i class="text-primary fas fa-sad-tear"></i></div>
+				<h2>Your cart is empty.</h2>
+				<small>We have tons of great products, certainly you can find something awesome?</small>
 			</div>
 		</div>
 	</div>
@@ -31,6 +36,10 @@
 <style scoped>
 	.container {
 		margin-top: 75px;
+	}
+
+	#empty-cart .fa-sad-tear {
+		font-size: 100px;
 	}
 </style>
 

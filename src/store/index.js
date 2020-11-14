@@ -66,12 +66,15 @@ export default new Vuex.Store({
 			}
 		},
 		dec_qty(state, id) {
-
-			console.log(state.cart);
-
 			for (var i in state.cart) {
 				if (state.cart[i].itemid === id) {
 					state.cart[i].quantity -= 1;
+
+					//If our item quantity is 0, remove the item from cart
+					if (state.cart[i].quantity === 0) {
+						state.cart.splice(i, 1);
+					}
+
 					break;
 				}
 			}
