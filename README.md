@@ -1,5 +1,5 @@
 # Vue Shopping Cart
-Shopping cart application built using Vue.js with Vuex.
+Shopping cart application built using Vue.js with Vuex. View this project on [GitHub Pages](https://schott-dev.github.io/vue-shopping-cart/).
 
 ## Project setup
 ```
